@@ -12,34 +12,37 @@ import SearchForm from "./SearchForm";
  * RoutesList -> CompanyPage -> CompanyCards
  */
 function CompaniesPage() {
-  const [companies, setCompanies] = useState(null);
+  const [pageState, setPageState] = useState({isLoading:true, companies:[]});
 
   /** Gets and loads all companies on mount */
   useEffect(function () {
     async function getCompanies() {
       const companies = await JoblyApi.getCompanies();
-      setCompanies(companies);
+      setPageState({isLoading: false, companies});
     }
     getCompanies();
   }, []);
 
   /**
-   * Function to pass down to form, and extract search term
+   * Function to pass down to form
+   * Filters company search by nameLike
+   * Sets array of companies to get request results
    * @param {Object} formData
-   * @returns String containing search term
    */
   async function nameLikeSearch (formData){
     console.log("formData.....", formData);
     const companies = await JoblyApi.getCompanies(formData);
-      setCompanies(companies);
+    setPageState(oldData => ({...oldData, companies}));
   }
 
-  if (!companies) return <h1>Loading...</h1>;
+  if (pageState.isLoading) return <h1>Loading...</h1>;
 
   return(
     <div>
-      <SearchForm nameLikeSearch={nameLikeSearch}/>
-      {companies.map(company => <CompanyCard company={company} key={company.handle}/>)}
+      <SearchForm searchFunction={nameLikeSearch} term="nameLike"/>
+      {pageState.companies.length === 0 ?
+       <h2>No Companies Found</h2> :
+       pageState.companies.map(company => <CompanyCard company={company} key={company.handle}/>)}
     </div>
   )
 }

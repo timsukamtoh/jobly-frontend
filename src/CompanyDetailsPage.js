@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import JoblyApi from "./api";
-
+import JobList from "./JobList";
 
 /**
  * Component for Company Details Page
  *
  * State:
- * - company : object
+ * - company : object {}
  *
  * RoutesList -> CompanyDetailsPage -> JobsList
  */
@@ -25,11 +25,14 @@ function CompanyDetailsPage() {
     getCompany();
   }, []);
 
+  if (!company) return <h1>Loading...</h1>;
 
+  console.log("company=", company)
   return(
     <div>
-      <h1>{company.name}</h1>
+      <h2>{company.name}</h2>
       <h4>{company.description}</h4>
+      <JobList jobs={company.jobs} />
     </div>
   )
 }
