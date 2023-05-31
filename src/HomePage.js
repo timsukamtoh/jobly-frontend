@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Component for HomePage
+ *
+ * RoutesList -> HomePage
+ */
 function HomePage() {
 
 

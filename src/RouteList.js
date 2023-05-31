@@ -4,6 +4,11 @@ import CompanyDetailsPage from './CompanyDetailsPage';
 import CompaniesPage from './CompaniesPage';
 import JobsPage from './JobsPage';
 
+/**
+ * Component for RouteList
+ *
+ * App -> RoutesList -> {HomePage, CompanyPage, CompanyDetailsPage, JobsPage}
+ */
 function RouteList() {
   return (
     <Routes>
