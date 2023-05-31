@@ -20,6 +20,7 @@ function RouteList() {
 
       <Route path="/jobs" element={<JobsPage />}/>
 
+      <Route path="/*" element={<Navigate to="/" />}/>
     </Routes>
   );
 }
