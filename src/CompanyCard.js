@@ -13,7 +13,7 @@ import "./CompanyCard.css";
 function CompanyCard({ company }) {
   return (
     <div className="CompanyCard">
-      <Link >
+      <Link to={`/companies/${company.handle}`}>
         <h3>{company.name}</h3>
         <p>{company.description}</p>
         <img src={company.logoUrl}/>

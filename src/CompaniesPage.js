@@ -28,16 +28,18 @@ function CompaniesPage() {
    * @param {Object} formData
    * @returns String containing search term
    */
-  function getSearchTerm (formData){
-    return formData.search
+  async function nameLikeSearch (formData){
+    console.log("formData.....", formData);
+    const companies = await JoblyApi.getCompanies(formData);
+      setCompanies(companies);
   }
 
   if (!companies) return <h1>Loading...</h1>;
 
   return(
     <div>
-      <SearchForm getSearchTerm={getSearchTerm}/>
-      {companies.map(company => <CompanyCard company={company}/>)}
+      <SearchForm nameLikeSearch={nameLikeSearch}/>
+      {companies.map(company => <CompanyCard company={company} key={company.handle}/>)}
     </div>
   )
 }

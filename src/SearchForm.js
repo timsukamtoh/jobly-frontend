@@ -11,7 +11,7 @@ import React, { useState } from 'react';
  *
  * {CompaniesPage, JobsPage} -> SearchForm
  */
-function SearchForm({ getSearchTerm }) {
+function SearchForm({ nameLikeSearch }) {
   const [formData, setFormData] = useState({});
 
   /**
@@ -25,14 +25,14 @@ function SearchForm({ getSearchTerm }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    getSearchTerm(formData);
+    nameLikeSearch(formData);
     setFormData({});
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        name="search"
+        name="nameLike"
         placeholder="Enter search term.."
         onChange={handleChange}
       />
