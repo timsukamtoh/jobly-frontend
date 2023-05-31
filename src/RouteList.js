@@ -3,16 +3,27 @@ import HomePage from './HomePage';
 import CompanyDetailsPage from './CompanyDetailsPage';
 import CompaniesPage from './CompaniesPage';
 import JobsPage from './JobsPage';
+import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
+import ProfilePage from './ProfilePage'
+
 
 /**
  * Component for RouteList
  *
- * App -> RoutesList -> {HomePage, CompanyPage, CompanyDetailsPage, JobsPage}
+ * App -> RoutesList -> {HomePage, LoginPage, SignUpPage, ProfilePage, CompanyPage, CompanyDetailsPage, JobsPage}
  */
 function RouteList() {
   return (
     <Routes>
+
       <Route path="/" element={<HomePage />}/>
+
+      <Route path="/login" element={<LoginPage />}/>
+
+      <Route path="/signup" element={<SignUpPage />}/>
+
+      <Route path="/profile" element={<ProfilePage />}/>
 
       <Route path="/companies/:handle" element={<CompanyDetailsPage />}/>
 

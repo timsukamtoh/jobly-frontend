@@ -48,17 +48,35 @@ class JoblyApi {
 
   /** Get list of companies with search term*/
 
-  static async getCompanies(data = {}) {
+  static async getCompanies(data) {
     let res = await this.request("companies", data);
     return res.companies;
   }
 
   /** Get list of jobs with search term */
 
-  static async getJobs(data = {}) {
+  static async getJobs(data) {
     let res = await this.request("jobs", data);
     return res.jobs;
   }
+
+  /** Send { username, password } to api and retrieve token */
+
+  static async login(data){
+    let res = await this.request("auth/token", data, "post");
+    return res.token;
+  }
+
+  /** Send { username, password, firstName, lastName,
+   * email } to api and retrieve token */
+
+  static async signUp(data){
+    let res = await this.request("auth/register", data, "post");
+    return res.token
+  }
+
+
+
 }
 
 export default JoblyApi;
