@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
@@ -28,7 +28,15 @@ function CompaniesPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user) return <Navigate to="/login" />;
+  if (!user){
+    // const message = "Must log in to view Companies";
+    // const color = "lightPink"
+
+    // const navigate = useNavigate;
+    // navigate("/login", message );
+    return <Navigate to="/login" />;
+
+  }
 
   /**
    * Function to pass down to form

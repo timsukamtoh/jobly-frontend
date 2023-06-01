@@ -13,8 +13,8 @@ function HomePage() {
   if(user) {
     return (
       <div>
-        <h1>Welcome back,</h1>
-        <h3>{user.username}</h3>
+        <h1>Welcome</h1>
+        <h3>{user.firstName} {user.lastName}</h3>
       </div>
     );
   }

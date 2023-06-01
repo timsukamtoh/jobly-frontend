@@ -10,7 +10,12 @@ import userContext from "./userContext";
  */
 function ProfilePage({ updateUser }) {
   const { user } = useContext(userContext);
-  const [formData, setFormData] = useState(user);
+  const [formData, setFormData] = useState({
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email
+  });
 
   /**redirects to login if not logged in */
   if (!user) return <Navigate to="/login" />;
@@ -28,7 +33,6 @@ function ProfilePage({ updateUser }) {
    */
   function handleSubmit(evt) {
     delete formData.username;
-    delete formData.isAdmin;
     evt.preventDefault();
     updateUser(formData);
   }

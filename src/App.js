@@ -21,9 +21,14 @@ import userContext from "./userContext";
  * 9. set current state in context for user
  */
 /**Component for App */
+
+const TOKEN_KEY = "token"
+
+
+
 function App() {
+  const [token, setToken] = useState(window.localStorage.getItem(TOKEN_KEY));
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null);//change to null
   console.log("user......", currentUser);
   console.log("token......", token);
 
@@ -35,9 +40,11 @@ function App() {
    */
   useEffect(function onTokenChange() {
     if (token === null) {
+      window.localStorage.removeItem(TOKEN_KEY);
       setCurrentUser(null);
     } else {
       JoblyApi.token = token;
+      window.localStorage.setItem(TOKEN_KEY, token);
       async function getUserInfo() {
         try {
           const { username } = jwt_decode(token);

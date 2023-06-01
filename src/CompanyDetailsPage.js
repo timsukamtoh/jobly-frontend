@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, Navigate } from 'react-router-dom';
 import JoblyApi from "./api";
 import JobList from "./JobList";
+import userContext from "./userContext";
 
 /**
  * Component for Company Details Page
@@ -15,6 +16,7 @@ function CompanyDetailsPage() {
 
   const [company, setCompany] = useState({});
   const { handle } = useParams();
+  const { user } = useContext(userContext);
 
   /** Gets and loads company data on mount */
   useEffect(function () {
@@ -24,6 +26,9 @@ function CompanyDetailsPage() {
     }
     getCompany();
   }, []);
+
+  /**redirects to login if not logged in */
+  if (!user) return <Navigate to="/login" />;
 
   if (!company) return <h1>Loading...</h1>;
 
