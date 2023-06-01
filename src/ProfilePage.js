@@ -18,7 +18,7 @@ function ProfilePage() {
   }
 
   /** Specifies the fields for the form */
-  const fields = ["firstName", "lastName", "email"];
+  const fields = ["username", "firstName", "lastName", "email"];
 
   return (
     <div>

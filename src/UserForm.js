@@ -28,31 +28,11 @@ function UserForm({ handleFunction, fields }) {
      * Submits form information and calls handleFunction from parent component
      */
     function handleSubmit(evt) {
-        console.log("formData,,,, ", formData);
+        console.log("formData.....", formData);
         evt.preventDefault();
         handleFunction(formData);
     }
 
-    if(!user) {
-        return (
-            <form onSubmit={handleSubmit}>
-                {fields.map(field =>
-                    {field!=="username" && <label htmlFor={field} key={field}>{startCase(field)}
-                        <input
-                            id={field}
-                            name={field}
-                            type={field === "password" || field === "email"
-                                ? field
-                                : "text"}
-                            value={user[field]}
-                            onChange={handleChange}
-                        />
-                    </label>}
-                )}
-                <button>Submit</button>
-            </form>
-        );
-    }
     return (
         <form onSubmit={handleSubmit}>
             {fields.map(field =>
@@ -63,9 +43,10 @@ function UserForm({ handleFunction, fields }) {
                         type={field === "password" || field === "email"
                             ? field
                             : "text"}
+                        { ...(user && field === "username" && {readOnly: true})}
+                        { ...(user && {value: user[field]})}
                         onChange={handleChange}
                     />
-                    <br/>
                 </label>
             )}
             <button>Submit</button>

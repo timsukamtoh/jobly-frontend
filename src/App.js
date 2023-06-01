@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Navigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
@@ -7,6 +7,8 @@ import JoblyApi from './api';
 import NavBar from './NavBar';
 import RouteList from './RouteList';
 import userContext from "./userContext";
+
+
 /**TODO:
  * 1. form submitted
  * 2. send to backend
@@ -16,11 +18,11 @@ import userContext from "./userContext";
  * 6. in use effect, decode token to get username
  * 7. use username to make a request to backend
  * 8. gives an object back with that user
- * 9. set current state for user
+ * 9. set current state in context for user
  */
 /**Component for App */
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState("");
 
   /**
@@ -30,8 +32,6 @@ function App() {
   async function login(formData) {
     const token = await JoblyApi.login(formData);
     setToken(token);
-    JoblyApi.token = token;
-    getUserInfo(token);
   }
 
   /**
@@ -41,16 +41,31 @@ function App() {
   async function signUp(formData) {
     const token = await JoblyApi.signUp(formData);
     setToken(token);
-    JoblyApi.token = token;
-    getUserInfo(token);
   }
 
-  async function getUserInfo(token) {
-    const { username, isAdmin } = jwt_decode(token);
-    const user = await JoblyApi.getUser(username);
-    setCurrentUser(user);
-    console.log(user);
-  }
+  /**
+   * useEffect activated when token changes
+   * Sets joblyApi.token
+   * gets username by decoding payload
+   * call joblyApi.getUser passing in username
+   */
+
+  useEffect(function onTokenChange() {
+    JoblyApi.token = token;
+    async function getUserInfo() {
+        try{
+            const { username, isAdmin } = jwt_decode(token)
+            const user = await JoblyApi.getUser(username);
+            setCurrentUser(user);
+            console.log("user......", user);
+        }
+        catch{
+            console.log("catch: no user")
+        }
+    }
+    getUserInfo();
+  }, [token]);
+
 
   return (
     <div className="App">
