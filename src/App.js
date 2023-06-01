@@ -23,7 +23,7 @@ import userContext from "./userContext";
 /**Component for App */
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState("");//change to null
+  const [token, setToken] = useState(null);//change to null
   console.log("user......", currentUser);
   console.log("token......", token);
 
@@ -34,7 +34,7 @@ function App() {
    * call joblyApi.getUser passing in username
    */
   useEffect(function onTokenChange() {
-    if (token === "") {
+    if (token === null) {
       setCurrentUser(null);
     } else {
       JoblyApi.token = token;
@@ -76,7 +76,7 @@ function App() {
    * @param {Object} formData data from form
    */
   async function updateUser(formData){
-    const user = await JoblyApi.updateUser(formData);
+    const user = await JoblyApi.updateUser(currentUser.username, formData);
     setCurrentUser(user);
   }
 
@@ -84,7 +84,7 @@ function App() {
    * Makes API post request to logout
    */
   async function logout() {
-    setToken("");
+    setToken(null);
   }
 
   return (

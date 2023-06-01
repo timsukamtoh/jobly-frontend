@@ -85,8 +85,8 @@ class JoblyApi {
 //current user has access
   /** Send { username, password, firstName, lastName, email }
    *  to api and retrieve user */
-  static async updateUser(data) {
-    let res = await this.request("users/", data, "patch");
+  static async updateUser(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
   }
 
