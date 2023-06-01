@@ -23,7 +23,7 @@ import userContext from "./userContext";
 /**Component for App */
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("");//change to null
   console.log("user......", currentUser);
   console.log("token......", token);
 
@@ -40,7 +40,7 @@ function App() {
       JoblyApi.token = token;
       async function getUserInfo() {
         try {
-          const { username, isAdmin } = jwt_decode(token);
+          const { username } = jwt_decode(token);
           const user = await JoblyApi.getUser(username);
           setCurrentUser(user);
         }

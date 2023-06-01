@@ -31,6 +31,7 @@ function UserForm({ handleFunction, fields }) {
         handleFunction(formData);
     }
 
+    //TODO: make separate forms for login, signup, profile
     return (
         <form onSubmit={handleSubmit}>
             {fields.map(field =>

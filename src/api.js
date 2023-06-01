@@ -81,7 +81,8 @@ class JoblyApi {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
-
+//hint endpoint is /user/username so update user needs to recieve username
+//current user has access
   /** Send { username, password, firstName, lastName, email }
    *  to api and retrieve user */
   static async updateUser(data) {
