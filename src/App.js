@@ -24,6 +24,33 @@ import userContext from "./userContext";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState("");
+  console.log("user......", currentUser);
+  console.log("token......", token);
+
+  /**
+   * useEffect activated when token changes
+   * Sets joblyApi.token
+   * gets username by decoding payload
+   * call joblyApi.getUser passing in username
+   */
+  useEffect(function onTokenChange() {
+    if (token === "") {
+      setCurrentUser(null);
+    } else {
+      JoblyApi.token = token;
+      async function getUserInfo() {
+        try {
+          const { username, isAdmin } = jwt_decode(token);
+          const user = await JoblyApi.getUser(username);
+          setCurrentUser(user);
+        }
+        catch (err){
+          console.error(err);
+        }
+      }
+      getUserInfo();
+    }
+  }, [token]);
 
   /**
    * Makes API post request to login
@@ -44,35 +71,28 @@ function App() {
   }
 
   /**
-   * useEffect activated when token changes
-   * Sets joblyApi.token
-   * gets username by decoding payload
-   * call joblyApi.getUser passing in username
+   * Makes API patch request to update user
+   * changes user state with setCurrentUser
+   * @param {Object} formData data from form
    */
+  async function updateUser(formData){
+    const user = await JoblyApi.updateUser(formData);
+    setCurrentUser(user);
+  }
 
-  useEffect(function onTokenChange() {
-    JoblyApi.token = token;
-    async function getUserInfo() {
-        try{
-            const { username, isAdmin } = jwt_decode(token)
-            const user = await JoblyApi.getUser(username);
-            setCurrentUser(user);
-            console.log("user......", user);
-        }
-        catch{
-            console.log("catch: no user")
-        }
-    }
-    getUserInfo();
-  }, [token]);
-
+  /**
+   * Makes API post request to logout
+   */
+  async function logout() {
+    setToken("");
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
         <userContext.Provider value={{ user: currentUser }}>
-          <NavBar />
-          <RouteList login={login} signUp={signUp} />
+          <NavBar logout={logout}/>
+          <RouteList login={login} signUp={signUp} updateUser={updateUser} />
         </userContext.Provider>
       </BrowserRouter>
     </div>

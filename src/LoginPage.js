@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 import UserForm from "./UserForm";
-import { useContext } from "react";
 import userContext from "./userContext";
 
 /**
@@ -11,12 +10,10 @@ import userContext from "./userContext";
  * RoutesList -> LoginPage -> UserForm
  */
 function LoginPage({ login }) {
-
     const { user } = useContext(userContext);
 
-    if (user) {
-        return <Navigate to="/"/>
-    }
+    /**redirects to homepage if logged in */
+    if (user) return <Navigate to="/" />;
 
     /** Specifies the fields for the form */
     const fields = ["username", "password"];

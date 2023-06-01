@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import HomePage from './HomePage';
 import CompanyDetailsPage from './CompanyDetailsPage';
 import CompaniesPage from './CompaniesPage';
@@ -7,13 +8,12 @@ import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
 import ProfilePage from './ProfilePage';
 
-
 /**
  * Component for RouteList
  *
  * App -> RoutesList -> {HomePage, LoginPage, SignUpPage, ProfilePage, CompanyPage, CompanyDetailsPage, JobsPage}
  */
-function RouteList({ login, signUp }) {
+function RouteList({ login, signUp, updateUser }) {
   return (
     <Routes>
 
@@ -23,7 +23,7 @@ function RouteList({ login, signUp }) {
 
       <Route path="/signup" element={<SignUpPage signUp={signUp}/>} />
 
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/profile" element={<ProfilePage updateUser={updateUser}/>} />
 
       <Route path="/companies/:handle" element={<CompanyDetailsPage />} />
 

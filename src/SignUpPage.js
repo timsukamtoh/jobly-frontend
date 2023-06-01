@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import JoblyApi from "./api";
+import React, { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+
 import UserForm from "./UserForm";
+import userContext from "./userContext";
 
 /**
  * Component for rendering SignUp Page
@@ -8,6 +10,10 @@ import UserForm from "./UserForm";
  * RoutesList -> SignUpPage -> UserForm
  */
 function SignUpPage({ signUp }) {
+    const { user } = useContext(userContext);
+
+    /**redirects to homepage if logged in */
+    if (user) return <Navigate to="/" />;
 
     /** Specifies the fields for the form */
     const fields = ["username", "password", "firstName", "lastName", "email"];

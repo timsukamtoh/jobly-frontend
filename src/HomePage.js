@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import userContext from "./userContext";
 
 /**
  * Component for HomePage
@@ -6,13 +8,21 @@ import React from 'react';
  * RoutesList -> HomePage
  */
 function HomePage() {
+  const { user } = useContext(userContext);
 
-
-  return(
+  if(user) {
+    return (
+      <div>
+        <h1>Welcome back,</h1>
+        <h3>{user.username}</h3>
+      </div>
+    );
+  }
+  return (
     <div>
       <h1>HomePage</h1>
     </div>
-  )
+  );
 }
 
 export default HomePage;

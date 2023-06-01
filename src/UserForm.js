@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { startCase } from "lodash";
-import { useContext } from "react";
+
 import userContext from "./userContext";
 
 /**
@@ -14,8 +14,7 @@ import userContext from "./userContext";
  */
 function UserForm({ handleFunction, fields }) {
     const { user } = useContext(userContext);
-    const [formData, setFormData] = useState({});
-
+    const [formData, setFormData] = useState(user);
     /**
      * Saves form data on user input changes
      */
@@ -28,7 +27,6 @@ function UserForm({ handleFunction, fields }) {
      * Submits form information and calls handleFunction from parent component
      */
     function handleSubmit(evt) {
-        console.log("formData.....", formData);
         evt.preventDefault();
         handleFunction(formData);
     }
@@ -43,13 +41,13 @@ function UserForm({ handleFunction, fields }) {
                         type={field === "password" || field === "email"
                             ? field
                             : "text"}
-                        { ...(user && field === "username" && {readOnly: true})}
-                        { ...(user && {value: user[field]})}
+                        { ...((user && field === "username") && {readOnly: true})}
+                        { ...(user && {value: formData[field]})}
                         onChange={handleChange}
                     />
                 </label>
             )}
-            <button>Submit</button>
+            <button>{user ? "Save Changes" : "Submit"}</button>
         </form>
     );
 }

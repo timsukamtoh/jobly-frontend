@@ -6,7 +6,7 @@ import userContext from "./userContext";
 /**
  * Component for NavBar
  */
-function NavBar() {
+function NavBar({logout}) {
   const { user } = useContext(userContext);
 
   if (user) {
@@ -26,6 +26,10 @@ function NavBar() {
 
         <NavLink to="/jobs" end>
           Jobs
+        </NavLink>
+
+        <NavLink to="/" onClick={logout} end>
+          Logout {user.username}
         </NavLink>
       </nav>
     );

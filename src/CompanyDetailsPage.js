@@ -27,7 +27,6 @@ function CompanyDetailsPage() {
 
   if (!company) return <h1>Loading...</h1>;
 
-  console.log("company=", company)
   return(
     <div>
       <h2>{company.name}</h2>

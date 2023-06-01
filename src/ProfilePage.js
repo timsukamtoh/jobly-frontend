@@ -1,21 +1,19 @@
-import React, { useState } from "react";
-import JoblyApi from "./api";
+import React, { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+
 import UserForm from "./UserForm";
+import userContext from "./userContext";
 
 /**
- * Component for rendering SignUp Page
+ * Component for rendering Profile Page
  *
- * RoutesList -> SignUpPage -> UserForm
+ * RoutesList -> ProfilePage -> UserForm
  */
-function ProfilePage() {
-  /**
-     * Makes API post request to sign up
-     * @param {Object} formData data from form
-     */
-  async function handleSignUp(formData) {
-    const token = await JoblyApi.signUp(formData);
-    console.log("token......", token);
-  }
+function ProfilePage({ updateUser }) {
+  const { user } = useContext(userContext);
+
+  /**redirects to login if not logged in */
+  if (!user) return <Navigate to="/login" />;
 
   /** Specifies the fields for the form */
   const fields = ["username", "firstName", "lastName", "email"];
@@ -23,7 +21,7 @@ function ProfilePage() {
   return (
     <div>
       <h1>Profile</h1>
-      <UserForm handleFunction={handleSignUp} fields={fields} />
+      <UserForm handleFunction={updateUser} fields={fields} />
     </div>
   );
 }
