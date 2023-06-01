@@ -5,7 +5,7 @@ import CompaniesPage from './CompaniesPage';
 import JobsPage from './JobsPage';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
-import ProfilePage from './ProfilePage'
+import ProfilePage from './ProfilePage';
 
 
 /**
@@ -13,25 +13,25 @@ import ProfilePage from './ProfilePage'
  *
  * App -> RoutesList -> {HomePage, LoginPage, SignUpPage, ProfilePage, CompanyPage, CompanyDetailsPage, JobsPage}
  */
-function RouteList() {
+function RouteList({ login, signUp }) {
   return (
     <Routes>
 
-      <Route path="/" element={<HomePage />}/>
+      <Route path="/" element={<HomePage />} />
 
-      <Route path="/login" element={<LoginPage />}/>
+      <Route path="/login" element={<LoginPage login={login} />} />
 
-      <Route path="/signup" element={<SignUpPage />}/>
+      <Route path="/signup" element={<SignUpPage signUp={signUp}/>} />
 
-      <Route path="/profile" element={<ProfilePage />}/>
+      <Route path="/profile" element={<ProfilePage />} />
 
-      <Route path="/companies/:handle" element={<CompanyDetailsPage />}/>
+      <Route path="/companies/:handle" element={<CompanyDetailsPage />} />
 
-      <Route path="/companies" element={<CompaniesPage />}/>
+      <Route path="/companies" element={<CompaniesPage />} />
 
-      <Route path="/jobs" element={<JobsPage />}/>
+      <Route path="/jobs" element={<JobsPage />} />
 
-      <Route path="/*" element={<Navigate to="/" />}/>
+      <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

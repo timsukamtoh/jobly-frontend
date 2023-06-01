@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import JoblyApi from "./api";
 import UserForm from "./UserForm";
 
-function SignUpPage(){
+/**
+ * Component for rendering SignUp Page
+ *
+ * RoutesList -> SignUpPage -> UserForm
+ */
+function SignUpPage({ signUp }) {
 
-    async function handleSignUp(formData){
-        const token = await JoblyApi.signUp(formData);
-        console.log("token......", token);
-    }
-
+    /** Specifies the fields for the form */
     const fields = ["username", "password", "firstName", "lastName", "email"];
 
-    return(
+    return (
         <div>
             <h1>SignUp</h1>
-            <UserForm handleFunction={handleSignUp} fields={fields}/>
+            <UserForm handleFunction={signUp} fields={fields} />
         </div>
-    )
+    );
 }
 
 export default SignUpPage;

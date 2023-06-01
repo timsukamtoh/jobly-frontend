@@ -23,6 +23,7 @@ function SearchForm({ searchFunction, term }) {
     setFormData({ [name]: value });
   }
 
+  /** Submits form information and calls handleFunction from parent component */
   function handleSubmit(evt) {
     evt.preventDefault();
     searchFunction(formData);

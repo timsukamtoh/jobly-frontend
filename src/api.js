@@ -62,7 +62,7 @@ class JoblyApi {
 
   /** Send { username, password } to api and retrieve token */
 
-  static async login(data){
+  static async login(data) {
     let res = await this.request("auth/token", data, "post");
     return res.token;
   }
@@ -70,12 +70,23 @@ class JoblyApi {
   /** Send { username, password, firstName, lastName,
    * email } to api and retrieve token */
 
-  static async signUp(data){
+  static async signUp(data) {
     let res = await this.request("auth/register", data, "post");
-    return res.token
+    return res.token;
   }
 
+  /** Send username and get user information */
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 
+  /** Send { username, password, firstName, lastName, email }
+   *  to api and retrieve user */
+  static async updateUser(data) {
+    let res = await this.request("users/", data, "patch");
+    return res.user;
+  }
 
 }
 
