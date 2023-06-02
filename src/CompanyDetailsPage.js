@@ -28,12 +28,12 @@ function CompanyDetailsPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user){
-    return navigate("/login", {state :{
-      message: "Must login to see company details",
-      type: "danger"
-    }})
-  }
+//   if (!user){
+//     return navigate("/login", {state :{
+//       message: "Must login to see company details",
+//       type: "danger"
+//     }})
+//   }
 
   if (!company) return <h1>Loading...</h1>;
 

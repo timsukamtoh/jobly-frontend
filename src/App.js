@@ -25,9 +25,10 @@ const TOKEN_KEY = "token"
 
 /**Component for App */
 function App() {
+
+  const [userState, setUserState] = useState({ isLoading: true, currentUser: null });
   const [token, setToken] = useState(localStorage.getItem(TOKEN_KEY));
-  const [currentUser, setCurrentUser] = useState(null);
-  console.log("user......", currentUser);
+  console.log("user......", userState.currentUser);
   console.log("token......", token);
 
   /**
@@ -39,7 +40,7 @@ function App() {
   useEffect(function onTokenChange() {
     if (token === null) {
       localStorage.removeItem(TOKEN_KEY);
-      setCurrentUser(null);
+      setUserState({ isLoading: false, currentUser: null });
     } else {
       JoblyApi.token = token;
       localStorage.setItem(TOKEN_KEY, token);
@@ -47,7 +48,7 @@ function App() {
         try {
           const { username } = jwt_decode(token);
           const user = await JoblyApi.getUser(username);
-          setCurrentUser(user);
+          setUserState({isLoading: false, currentUser: user});
         }
         catch (err){
           console.error(err);
@@ -77,12 +78,12 @@ function App() {
 
   /**
    * Makes API patch request to update user
-   * changes user state with setCurrentUser
+   * changes user state with setUserState
    * @param {Object} formData data from form
    */
-  async function updateUser(formData){ //TODO: updateUser should take in 2 arguments
-    const user = await JoblyApi.updateUser(currentUser.username, formData);
-    setCurrentUser(user);
+  async function updateUser(username, formData){
+    const user = await JoblyApi.updateUser(username, formData);
+    setUserState({isLoading: false, currentUser: user})
   }
 
   /**
@@ -92,10 +93,12 @@ function App() {
     setToken(null);
   }
 
+  if (userState.isLoading) return <h1>Loading...</h1>;
+
   return (
     <div className="App">
       <BrowserRouter>
-        <userContext.Provider value={{ user: currentUser }}>
+        <userContext.Provider value={{ user: userState.currentUser }}>
           <NavBar logout={logout}/>
           <RouteList login={login} signUp={signUp} updateUser={updateUser} />
         </userContext.Provider>

@@ -19,12 +19,12 @@ function ProfilePage({ updateUser }) {
   });
 
   /**redirects to login if not logged in */
-  if (!user){
-    return navigate("/login", {state :{
-      message: "Must login to see profile",
-      type: "danger"
-    }})
-  }
+//   if (!user){
+//     return navigate("/login", {state :{
+//       message: "Must login to see profile",
+//       type: "danger"
+//     }})
+//   }
 
   /**
    * Saves form data on user input changes
@@ -38,10 +38,10 @@ function ProfilePage({ updateUser }) {
    * Submits form information and calls updateUser from parent component
    */
   function handleSubmit(evt) {
-    delete formData.username;
-    //TODO: Create new object to extract data from formData
     evt.preventDefault();
-    updateUser(formData); //TODO: refactor to take 2 arguments
+    let dataNoUsername = formData;
+    delete dataNoUsername.username;
+    updateUser(user.username, dataNoUsername);
     showSuccessfulUpdate();
   }
 

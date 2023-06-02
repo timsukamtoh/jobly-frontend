@@ -15,14 +15,14 @@ function LoginPage({ login }) {
     const { state } = useLocation();
 
     /**redirects to homepage if logged in */
-    if (user) {
-        return navigate("/", {
-            state: {
-                message: "Logged In Successfully",
-                type: "success"
-            }
-        });
-    }
+    // if (user) {
+    //     return navigate("/", {
+    //         state: {
+    //             message: "Logged In Successfully",
+    //             type: "success"
+    //         }
+    //     });
+    // }
 
     /**
      * Saves form data on user input changes

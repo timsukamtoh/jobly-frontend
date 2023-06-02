@@ -28,12 +28,12 @@ function JobsPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user){
-    return navigate("/login", {state :{
-      message: "Must login to see jobs",
-      type: "danger"
-    }})
-  }
+//   if (!user){
+//     return navigate("/login", {state :{
+//       message: "Must login to see jobs",
+//       type: "danger"
+//     }})
+//   }
 
   /**
    * Function to pass down to form

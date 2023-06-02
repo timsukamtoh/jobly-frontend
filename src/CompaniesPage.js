@@ -29,12 +29,12 @@ function CompaniesPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user){
-    return navigate("/login", {state :{
-      message: "Must login to see companies",
-      type: "danger"
-    }})
-  }
+//   if (!user){
+//     return navigate("/login", {state :{
+//       message: "Must login to see companies",
+//       type: "danger"
+//     }})
+//   }
 
   /**
    * Function to pass down to form

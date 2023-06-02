@@ -15,14 +15,14 @@ function SignUpPage({ signUp }) {
     const navigate = useNavigate();
 
     /**redirects to homepage if logged in */
-    if (user) {
-        return navigate("/", {
-            state: {
-                message: "Signed Up Successfully",
-                type: "success"
-            }
-        });
-    }
+    // if (user) {
+    //     return navigate("/", {
+    //         state: {
+    //             message: "Signed Up Successfully",
+    //             type: "success"
+    //         }
+    //     });
+    // }
 
     /**
      * Saves form data on user input changes
