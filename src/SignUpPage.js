@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import UserForm from "./UserForm";
 import userContext from "./userContext";
@@ -12,9 +12,17 @@ import userContext from "./userContext";
 function SignUpPage({ signUp }) {
     const { user } = useContext(userContext);
     const [formData, setFormData] = useState(null);
+    const navigate = useNavigate();
 
     /**redirects to homepage if logged in */
-    if (user) return <Navigate to="/" />;
+    if (user) {
+        return navigate("/", {
+            state: {
+                message: "Signed Up Successfully",
+                type: "success"
+            }
+        });
+    }
 
     /**
      * Saves form data on user input changes
@@ -44,7 +52,7 @@ function SignUpPage({ signUp }) {
                         onChange={handleChange}
                         readOnly
                     />
-                </label><br/>
+                </label><br />
                 <label htmlFor="password" >Password
                     <input
                         id="password"
@@ -52,7 +60,7 @@ function SignUpPage({ signUp }) {
                         type="password"
                         onChange={handleChange}
                     />
-                </label><br/>
+                </label><br />
                 <label htmlFor="firstName" >First Name
                     <input
                         id="firstName"
@@ -60,7 +68,7 @@ function SignUpPage({ signUp }) {
                         type="text"
                         onChange={handleChange}
                     />
-                </label><br/>
+                </label><br />
                 <label htmlFor="lastName" >Last Name
                     <input
                         id="lastName"
@@ -68,7 +76,7 @@ function SignUpPage({ signUp }) {
                         type="text"
                         onChange={handleChange}
                     />
-                </label><br/>
+                </label><br />
                 <label htmlFor="email" >Email
                     <input
                         id="email"
@@ -76,7 +84,7 @@ function SignUpPage({ signUp }) {
                         type="email"
                         onChange={handleChange}
                     />
-                </label><br/>
+                </label><br />
                 <button>Submit</button>
             </form>
         </div>

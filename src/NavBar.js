@@ -6,7 +6,7 @@ import userContext from "./userContext";
 /**
  * Component for NavBar
  */
-function NavBar({logout}) {
+function NavBar({ logout }) {
   const { user } = useContext(userContext);
 
   if (user) {
@@ -28,7 +28,12 @@ function NavBar({logout}) {
           Jobs
         </NavLink>
 
-        <NavLink to="/" onClick={logout} end>
+        <NavLink
+          to={{
+            pathname: '/',
+            state: { message: "Logged out successfully", type: "success" }
+          }}
+          onClick={logout} end>
           Logout {user.username}
         </NavLink>
       </nav>

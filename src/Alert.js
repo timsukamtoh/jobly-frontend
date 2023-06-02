@@ -8,14 +8,10 @@ import React from "react";
  * ex. CompaniesPage --> Alert ...
  * */
 
-function Alert({ message, color }){
-
-    const style = {backgroundColor: color}
-
+function Alert({ message, type }){
     return(
-        <div style={style}>
-            <p>{message}</p>
-        </div>
+        <div className={`alert alert-${type}`}>{message}</div>
     )
-
 }
+
+export default Alert;

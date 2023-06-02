@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import JobList from "./JobList";
 import JoblyApi from "./api";
@@ -16,6 +16,7 @@ import userContext from "./userContext";
 function JobsPage() {
   const [pageState, setPageState] = useState({ isLoading: true, jobs: [] });
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   /** Gets and loads all jobs on mount */
   useEffect(function () {
@@ -27,7 +28,12 @@ function JobsPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user) return <Navigate to="/login" />;
+  if (!user){
+    return navigate("/login", {state :{
+      message: "Must login to see jobs",
+      type: "danger"
+    }})
+  }
 
   /**
    * Function to pass down to form

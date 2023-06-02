@@ -20,14 +20,12 @@ import userContext from "./userContext";
  * 8. gives an object back with that user
  * 9. set current state in context for user
  */
-/**Component for App */
 
 const TOKEN_KEY = "token"
 
-
-
+/**Component for App */
 function App() {
-  const [token, setToken] = useState(window.localStorage.getItem(TOKEN_KEY));
+  const [token, setToken] = useState(localStorage.getItem(TOKEN_KEY));
   const [currentUser, setCurrentUser] = useState(null);
   console.log("user......", currentUser);
   console.log("token......", token);
@@ -40,11 +38,11 @@ function App() {
    */
   useEffect(function onTokenChange() {
     if (token === null) {
-      window.localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(TOKEN_KEY);
       setCurrentUser(null);
     } else {
       JoblyApi.token = token;
-      window.localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(TOKEN_KEY, token);
       async function getUserInfo() {
         try {
           const { username } = jwt_decode(token);
@@ -82,7 +80,7 @@ function App() {
    * changes user state with setCurrentUser
    * @param {Object} formData data from form
    */
-  async function updateUser(formData){
+  async function updateUser(formData){ //TODO: updateUser should take in 2 arguments
     const user = await JoblyApi.updateUser(currentUser.username, formData);
     setCurrentUser(user);
   }

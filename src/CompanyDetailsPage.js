@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import JoblyApi from "./api";
 import JobList from "./JobList";
 import userContext from "./userContext";
@@ -13,10 +13,10 @@ import userContext from "./userContext";
  * RoutesList -> CompanyDetailsPage -> JobsList
  */
 function CompanyDetailsPage() {
-
   const [company, setCompany] = useState({});
   const { handle } = useParams();
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   /** Gets and loads company data on mount */
   useEffect(function () {
@@ -28,7 +28,12 @@ function CompanyDetailsPage() {
   }, []);
 
   /**redirects to login if not logged in */
-  if (!user) return <Navigate to="/login" />;
+  if (!user){
+    return navigate("/login", {state :{
+      message: "Must login to see company details",
+      type: "danger"
+    }})
+  }
 
   if (!company) return <h1>Loading...</h1>;
 

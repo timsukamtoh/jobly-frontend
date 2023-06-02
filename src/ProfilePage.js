@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import userContext from "./userContext";
 
@@ -10,6 +10,7 @@ import userContext from "./userContext";
  */
 function ProfilePage({ updateUser }) {
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: user.username,
     firstName: user.firstName,
@@ -18,7 +19,12 @@ function ProfilePage({ updateUser }) {
   });
 
   /**redirects to login if not logged in */
-  if (!user) return <Navigate to="/login" />;
+  if (!user){
+    return navigate("/login", {state :{
+      message: "Must login to see profile",
+      type: "danger"
+    }})
+  }
 
   /**
    * Saves form data on user input changes
@@ -33,8 +39,20 @@ function ProfilePage({ updateUser }) {
    */
   function handleSubmit(evt) {
     delete formData.username;
+    //TODO: Create new object to extract data from formData
     evt.preventDefault();
-    updateUser(formData);
+    updateUser(formData); //TODO: refactor to take 2 arguments
+    showSuccessfulUpdate();
+  }
+
+  /**
+   * Redirects to profile page and shows success alert
+   */
+  function showSuccessfulUpdate(){
+    return navigate("/", {state :{
+      message: "Updated Profile Successfully",
+      type: "success"
+    }})
   }
 
   return (

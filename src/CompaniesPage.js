@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
@@ -17,6 +17,7 @@ import userContext from "./userContext";
 function CompaniesPage() {
   const [pageState, setPageState] = useState({ isLoading: true, companies: [] });
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   /** Gets and loads all companies on mount */
   useEffect(function () {
@@ -29,13 +30,10 @@ function CompaniesPage() {
 
   /**redirects to login if not logged in */
   if (!user){
-    // const message = "Must log in to view Companies";
-    // const color = "lightPink"
-
-    // const navigate = useNavigate;
-    // navigate("/login", message );
-    return <Navigate to="/login" />;
-
+    return navigate("/login", {state :{
+      message: "Must login to see companies",
+      type: "danger"
+    }})
   }
 
   /**

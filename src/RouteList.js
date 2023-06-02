@@ -13,10 +13,10 @@ import ProfilePage from './ProfilePage';
  *
  * App -> RoutesList -> {HomePage, LoginPage, SignUpPage, ProfilePage, CompanyPage, CompanyDetailsPage, JobsPage}
  */
-function RouteList({ login, signUp, updateUser }) {
+function RouteList({ login, signUp, updateUser }) { //TODO: move protection logic here
+  // /login {user ? <HomePage/> : <LoginPage/>}
   return (
     <Routes>
-
       <Route path="/" element={<HomePage />} />
 
       <Route path="/login" element={<LoginPage login={login} />} />
