@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Alert from "./Alert";
+import "./userForm.css"
 /**
  * Component for rendering SignUp Page
  *
@@ -35,7 +36,7 @@ function SignUpPage({ signUp }) {
             {formErrors.length > 0 && formErrors.map(error =>
                 <Alert key={error} type="danger" message={error} />)}
             <h1>SignUp</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="userForm" onSubmit={handleSubmit}>
                 <label htmlFor="username" >Username
                     <input
                         id="username"

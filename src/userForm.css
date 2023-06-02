@@ -1,0 +1,9 @@
+.userForm {
+    background-color: lightskyblue;
+    border-radius: 10px;
+    margin:30px;
+    padding:10px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
