@@ -12,49 +12,46 @@ function NavBar({ logout }) {
 
   if (user) {
     return (
-      <nav className="NavBar">
-        <NavLink to="/" end>
-          Home
-        </NavLink>
-
-        <NavLink to="/profile" end>
-          Profile
-        </NavLink>
-
-        <NavLink to="/companies" end>
-          Companies
-        </NavLink>
-
-        <NavLink to="/jobs" end>
-          Jobs
-        </NavLink>
-
-        <NavLink
-          to={{
-            pathname: '/',
-            state: { message: "Logged out successfully", type: "success" }
-          }}
-          onClick={logout} end>
-          Logout {user.username}
-        </NavLink>
+      <nav className="navbar navbar-dark navbar-expand-sm bg-primary">
+        <div className="container-fluid">
+          <NavLink className="col-4 navbar-brand nav-link" to="/" end>
+            Home
+          </NavLink>
+          <ul className="navbar-nav">
+            <NavLink className="nav-link" to="/profile" end>
+              Profile
+            </NavLink>
+            <NavLink className="nav-link" to="/companies" end>
+              Companies
+            </NavLink>
+            <NavLink className="nav-link" to="/jobs" end>
+              Jobs
+            </NavLink>
+            <NavLink className="nav-link" to="/" onClick={logout} end>
+              Logout {user.username}
+            </NavLink>
+          </ul>
+        </div>
       </nav>
     );
   }
 
   return (
-    <nav className="NavBar">
-      <NavLink to="/" end>
-        Home
-      </NavLink>
+    <nav className="navbar navbar-dark navbar-expand-sm bg-primary">
+      <div className="container-fluid">
+        <NavLink className="col-4 navbar-brand nav-link" to="/" end>
+          Home
+        </NavLink>
+        <ul className="navbar-nav">
+          <NavLink className="nav-link" to="/login" end>
+            Login
+          </NavLink>
 
-      <NavLink to="/login" end>
-        Login
-      </NavLink>
-
-      <NavLink to="/signup" end>
-        Sign Up
-      </NavLink>
-
+          <NavLink className="nav-link" to="/signup" end>
+            Sign Up
+          </NavLink>
+        </ul>
+      </div>
     </nav>
   );
 }

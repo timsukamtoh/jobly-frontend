@@ -30,13 +30,13 @@ function SearchForm({ searchFunction, term }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form class="form-inline container" onSubmit={handleSubmit}>
+      <input class="form-control mr-sm-2"
         name={term}
         placeholder="Enter search term.."
         onChange={handleChange}
       />
-      <button>Submit</button>
+      <button className="btn btn-outline-success my-2 my-sm-0">Submit</button>
     </form>
   );
 }
