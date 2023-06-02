@@ -30,14 +30,13 @@ function SearchForm({ searchFunction, term }) {
   }
 
   return (
-    <form class="form-inline container" onSubmit={handleSubmit}>
-      <input class="form-control mr-sm-2"
+    <form class="input-group" onSubmit={handleSubmit}>
+      <input class="form-control rounded"
         name={term}
         placeholder="Enter search term.."
         onChange={handleChange}
       />
-      <button className="btn btn-outline-success my-2 my-sm-0">Submit</button>
-
+      <button className="btn bg-secondary btn-outline-success my-2 my-sm-0">Submit</button>
     </form>
   );
 }
