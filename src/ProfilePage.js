@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import userContext from "./userContext";
-
+import Alert from "./Alert";
 /**
  * Component for rendering Profile Page
  *
@@ -10,21 +9,14 @@ import userContext from "./userContext";
  */
 function ProfilePage({ updateUser }) {
   const { user } = useContext(userContext);
-  const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState([]);
+  const [successfulUpdate, setSuccessfulUpdate] = useState(false);
   const [formData, setFormData] = useState({
     username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email
   });
-
-  /**redirects to login if not logged in */
-//   if (!user){
-//     return navigate("/login", {state :{
-//       message: "Must login to see profile",
-//       type: "danger"
-//     }})
-//   }
 
   /**
    * Saves form data on user input changes
@@ -37,26 +29,25 @@ function ProfilePage({ updateUser }) {
   /**
    * Submits form information and calls updateUser from parent component
    */
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     let dataNoUsername = formData;
     delete dataNoUsername.username;
-    updateUser(user.username, dataNoUsername);
-    showSuccessfulUpdate();
-  }
-
-  /**
-   * Redirects to profile page and shows success alert
-   */
-  function showSuccessfulUpdate(){
-    return navigate("/", {state :{
-      message: "Updated Profile Successfully",
-      type: "success"
-    }})
+    try {
+      await updateUser(user.username, dataNoUsername);
+    } catch (errors) {
+      setFormErrors(errors);
+    }
+    setFormErrors([]);
+    setSuccessfulUpdate(true);
   }
 
   return (
     <div>
+      {formErrors.length > 0 && formErrors.map(error =>
+        <Alert key={error} type="danger" message={error} />)}
+      {successfulUpdate &&
+        <Alert type="success" message={"Updated successfully."} />}
       <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" >Username

@@ -21,7 +21,7 @@ import userContext from "./userContext";
  * 9. set current state in context for user
  */
 
-const TOKEN_KEY = "token"
+const TOKEN_KEY = "token";
 
 /**Component for App */
 function App() {
@@ -48,9 +48,9 @@ function App() {
         try {
           const { username } = jwt_decode(token);
           const user = await JoblyApi.getUser(username);
-          setUserState({isLoading: false, currentUser: user});
+          setUserState({ isLoading: false, currentUser: user });
         }
-        catch (err){
+        catch (err) {
           console.error(err);
         }
       }
@@ -81,9 +81,9 @@ function App() {
    * changes user state with setUserState
    * @param {Object} formData data from form
    */
-  async function updateUser(username, formData){
+  async function updateUser(username, formData) {
     const user = await JoblyApi.updateUser(username, formData);
-    setUserState({isLoading: false, currentUser: user})
+    setUserState({ isLoading: false, currentUser: user });
   }
 
   /**
@@ -99,7 +99,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <userContext.Provider value={{ user: userState.currentUser }}>
-          <NavBar logout={logout}/>
+          <NavBar logout={logout} />
           <RouteList login={login} signUp={signUp} updateUser={updateUser} />
         </userContext.Provider>
       </BrowserRouter>

@@ -1,28 +1,14 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-import UserForm from "./UserForm";
-import userContext from "./userContext";
-
+import Alert from "./Alert";
 /**
  * Component for rendering SignUp Page
  *
  * RoutesList -> SignUpPage
  */
 function SignUpPage({ signUp }) {
-    const { user } = useContext(userContext);
     const [formData, setFormData] = useState(null);
-    const navigate = useNavigate();
-
-    /**redirects to homepage if logged in */
-    // if (user) {
-    //     return navigate("/", {
-    //         state: {
-    //             message: "Signed Up Successfully",
-    //             type: "success"
-    //         }
-    //     });
-    // }
+    const [formErrors, setFormErrors] = useState([]);
 
     /**
      * Saves form data on user input changes
@@ -35,13 +21,19 @@ function SignUpPage({ signUp }) {
     /**
      * Submits form information and calls signUp from parent component
      */
-    function handleSubmit(evt) {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        signUp(formData);
+        try {
+            await signUp(formData);
+        } catch (errors) {
+            setFormErrors(errors);
+        }
     }
 
     return (
         <div>
+            {formErrors.length > 0 && formErrors.map(error =>
+                <Alert key={error} type="danger" message={error} />)}
             <h1>SignUp</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username" >Username
@@ -50,7 +42,6 @@ function SignUpPage({ signUp }) {
                         name="username"
                         type="text"
                         onChange={handleChange}
-                        readOnly
                     />
                 </label><br />
                 <label htmlFor="password" >Password

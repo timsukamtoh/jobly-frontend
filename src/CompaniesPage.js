@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
-import userContext from "./userContext";
 
 /**
  * Component for Companies List page
@@ -16,8 +14,6 @@ import userContext from "./userContext";
  */
 function CompaniesPage() {
   const [pageState, setPageState] = useState({ isLoading: true, companies: [] });
-  const { user } = useContext(userContext);
-  const navigate = useNavigate();
 
   /** Gets and loads all companies on mount */
   useEffect(function () {
@@ -27,14 +23,6 @@ function CompaniesPage() {
     }
     getCompanies();
   }, []);
-
-  /**redirects to login if not logged in */
-//   if (!user){
-//     return navigate("/login", {state :{
-//       message: "Must login to see companies",
-//       type: "danger"
-//     }})
-//   }
 
   /**
    * Function to pass down to form

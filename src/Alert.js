@@ -8,10 +8,9 @@ import React from "react";
  * ex. CompaniesPage --> Alert ...
  * */
 
-function Alert({ message, type }){
-    return(
+function Alert({ type, message }) {
+    return (
         <div className={`alert alert-${type}`}>{message}</div>
-    )
+    );
 }
-
 export default Alert;

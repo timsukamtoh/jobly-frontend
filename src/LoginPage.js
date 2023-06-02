@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-import userContext from "./userContext";
 import Alert from "./Alert";
 /**
  * Component for rendering Login Page
@@ -9,20 +8,8 @@ import Alert from "./Alert";
  * RoutesList -> LoginPage
  */
 function LoginPage({ login }) {
-    const { user } = useContext(userContext);
     const [formData, setFormData] = useState(null);
-    const navigate = useNavigate();
-    const { state } = useLocation();
-
-    /**redirects to homepage if logged in */
-    // if (user) {
-    //     return navigate("/", {
-    //         state: {
-    //             message: "Logged In Successfully",
-    //             type: "success"
-    //         }
-    //     });
-    // }
+    const [formErrors, setFormErrors] = useState([]);
 
     /**
      * Saves form data on user input changes
@@ -35,14 +22,19 @@ function LoginPage({ login }) {
     /**
      * Submits form information and calls login from parent component
      */
-    function handleSubmit(evt) {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        login(formData);
+        try {
+            await login(formData);
+        } catch (errors) {
+            setFormErrors(errors)
+        }
     }
 
     return (
         <div>
-            {state && <Alert message={state.message} type={state.type} />}
+            {formErrors.length > 0 && formErrors.map(error=>
+                <Alert key={error} type="danger" message={error}/>)}
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username" >Username
