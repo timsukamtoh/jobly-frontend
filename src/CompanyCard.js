@@ -13,10 +13,18 @@ import "./CompanyCard.css";
 function CompanyCard({ company }) {
   return (
     <div className="CompanyCard">
-      <Link to={`/companies/${company.handle}`}>
-        <h3>{company.name}</h3>
-        <p>{company.description}</p>
-        <img src={company.logoUrl}/>
+      <Link to={`/companies/${company.handle}`} className="text-dark text-start text-decoration-none">
+        <div className = "row">
+            <div className="col-3">
+                <img className="rounded img-fluid" src={company.logoUrl}/>
+            </div>
+            <div className="col-8">
+                <h3>{company.name}</h3>
+                <p>{company.description}</p>
+            </div>
+
+        </div>
+
       </Link>
     </div>
 

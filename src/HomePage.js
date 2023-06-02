@@ -30,12 +30,13 @@ function HomePage() {
     <div>
       <h1>Jobly</h1>
       <h4>All the jobs in one, convenient place.</h4>
-      <div>
-        <button onClick={()=>navigateTo("login")}>Login</button>
-        <button onClick={()=>navigateTo("signup")}>Sign Up</button>
+      <div className="form-group col-4 mx-auto m-4">
+        <button onClick={()=>navigateTo("login")} className="btn btn-secondary m-2">Login</button>
+        <button onClick={()=>navigateTo("signup")} className="btn btn-secondary m-2">Sign Up</button>
       </div>
     </div>
   );
 }
 
 export default HomePage;
+

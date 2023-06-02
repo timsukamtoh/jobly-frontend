@@ -37,23 +37,29 @@ function LoginPage({ login }) {
                 <Alert key={error} type="danger" message={error}/>)}
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username" >Username
-                    <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        onChange={handleChange}
-                    />
-                </label><br />
-                <label htmlFor="password" >Password
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        onChange={handleChange}
-                    />
-                </label><br />
-                <button>Submit</button>
+            <div className="form-group col-4 mx-auto text-start m-2">
+                <label htmlFor="username" >Username</label>
+                <input
+                id="username"
+                name="username"
+                type="text"
+                className="form-control"
+                onChange={handleChange}
+                />
+            </div>
+            <div className="form-group col-4 mx-auto text-start m-2">
+                <label htmlFor="password" >Password</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className="form-control"
+                    onChange={handleChange}
+                />
+            </div>
+                <div className="form-group col-4 mx-auto m-4">
+                    <button className="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     );
