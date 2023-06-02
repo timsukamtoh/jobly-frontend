@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Alert from "./Alert";
-import "./userForm.css"
+
 /**
  * Component for rendering SignUp Page
  *
@@ -35,52 +35,79 @@ function SignUpPage({ signUp }) {
         <div>
             {formErrors.length > 0 && formErrors.map(error =>
                 <Alert key={error} type="danger" message={error} />)}
-            <h1>SignUp</h1>
-            <form className="userForm" onSubmit={handleSubmit}>
-                <label htmlFor="username" >Username
-                    <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        onChange={handleChange}
-                    />
-                </label><br />
-                <label htmlFor="password" >Password
+            <h1 className="m-4">SignUp</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="username">Username</label>
+                        <input
+
+                            id="username"
+                            name="username"
+                            type="text"
+                            className="form-control"
+                            onChange={handleChange}
+                        />
+                </div>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="password" >Password</label>
                     <input
                         id="password"
                         name="password"
                         type="password"
+                        className="form-control"
                         onChange={handleChange}
                     />
-                </label><br />
-                <label htmlFor="firstName" >First Name
+                </div>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="firstName" >First Name</label>
                     <input
                         id="firstName"
                         name="firstName"
                         type="text"
+                        className="form-control col-6"
                         onChange={handleChange}
                     />
-                </label><br />
-                <label htmlFor="lastName" >Last Name
+                </div>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="lastName" >Last Name</label>
                     <input
                         id="lastName"
                         name="lastName"
                         type="text"
+                        className="form-control col-6"
                         onChange={handleChange}
                     />
-                </label><br />
-                <label htmlFor="email" >Email
+                </div>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="lastName" >Last Name</label>
+                    <input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        className="form-control col-6"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group col-4 mx-auto text-start m-2">
+                    <label htmlFor="email" >Email </label>
                     <input
                         id="email"
                         name="email"
                         type="email"
+                        className="form-control col-6"
                         onChange={handleChange}
                     />
-                </label><br />
-                <button>Submit</button>
+                </div>
+                <div className="form-group col-4 mx-auto m-4">
+                    <button className="btn btn-primary">Submit</button>
+                </div>
+
             </form>
         </div>
     );
 }
 
 export default SignUpPage;
+
+
+

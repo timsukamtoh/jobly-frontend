@@ -31,14 +31,24 @@ function SearchForm({ searchFunction, term }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name={term}
-        placeholder="Enter search term.."
-        onChange={handleChange}
-      />
-      <button>Submit</button>
+            <input
+                name={term}
+                placeholder="Enter search term.."
+                onChange={handleChange}
+            />
+            <button>Submit</button>
     </form>
   );
 }
 
 export default SearchForm;
+
+{/* <div className="input-group mx-auto m-3 ">
+</div>
+
+<div className="form-group-append">
+className = "form-control mt-3"
+        <div className="w-50"></div>
+        </div>
+className="btn btn-outline-secondary"
+</div> */}
