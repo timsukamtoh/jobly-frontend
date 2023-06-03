@@ -60,7 +60,7 @@ function ProfilePage({ updateUser }) {
                 aria-label="Disabled input example"
                 onChange={handleChange}
                 value={formData.username}
-                disabled readOnly
+                disabled
             />
         </div>
         <div className="form-group col-4 mx-auto text-start m-2">
