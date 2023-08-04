@@ -20,14 +20,14 @@ function HomePage() {
 
   if (user) {
     return (
-      <div>
-        <h1>Welcome</h1>
+      <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25">
+        <h1 className="display-1"><strong>Welcome</strong></h1>
         <h3>{user.firstName} {user.lastName}</h3>
       </div>
     );
   }
   return (
-    <div>
+    <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 bg-gradient">
       <h1 className="display-1"><strong>Jobly</strong></h1>
       <h4>All the jobs in one, convenient place.</h4>
       <div className="form-group col-4 mx-auto m-4">

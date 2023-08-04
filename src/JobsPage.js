@@ -39,7 +39,7 @@ function JobsPage() {
   if (pageState.isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 d-flex flex-column align-items-center">
       <SearchForm searchFunction={titleSearch} term="title" />
       {pageState.jobs.length === 0 ?
        <h2>No Jobs Found</h2> :

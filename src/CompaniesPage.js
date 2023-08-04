@@ -38,7 +38,7 @@ function CompaniesPage() {
   if (pageState.isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 d-flex flex-column align-items-center">
       <SearchForm searchFunction={nameLikeSearch} term="nameLike" />
       {pageState.companies.length === 0 ?
         <h2>No Companies Found</h2> :

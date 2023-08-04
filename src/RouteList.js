@@ -23,7 +23,7 @@ function RouteList({ login, signUp, updateUser }) {
 
   if (user) {
     return (
-      <Routes className="p-5">
+      <Routes>
         <Route path="/" element={<HomePage />} />
 
         <Route path="/profile" element={<ProfilePage updateUser={updateUser} />} />
@@ -40,7 +40,7 @@ function RouteList({ login, signUp, updateUser }) {
   }
   else {
     return (
-      <Routes className="p-5">
+      <Routes>
         <Route path="/" element={<HomePage />} />
 
         <Route path="/login" element={<LoginPage login={login} />} />

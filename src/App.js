@@ -96,7 +96,7 @@ function App() {
   if (userState.isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div className="App container-fluid">
+    <div className="App container-fluid position-relative">
       <BrowserRouter>
         <userContext.Provider value={{ user: userState.currentUser }}>
           <NavBar logout={logout} />

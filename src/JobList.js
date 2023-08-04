@@ -14,7 +14,7 @@ function JobList({ jobs }) {
   if (!jobs) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center w-100">
       {jobs.map(job => <JobCard key={job.id} job={job} />)}
     </div>
   );

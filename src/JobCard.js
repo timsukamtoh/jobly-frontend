@@ -10,11 +10,11 @@ import "./JobCard.css"
  */
 function JobCard({job}){
   return(
-    <div className="JobCard text-start ms-3">
-      <h3 className="ms-3 mt-3 mb-3">{job.title}</h3>
-      <h6 className="ms-3 mb-2">Company: {job.companyHandle}</h6>
-      <p className="ms-3 mb-2">Salary: {job.salary}</p>
-      <p className="ms-3 mb-2">Equity: {job.equity}</p>
+    <div className="JobCard text-white text-start p-3 bg-secondary bg-opacity-75 w-75">
+      <h3>{job.title}</h3>
+      <h6>Company: {job.companyHandle}</h6>
+      <p>Salary: {job.salary}</p>
+      <p>Equity: {job.equity}</p>
     </div>
   )
 }

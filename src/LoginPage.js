@@ -32,7 +32,7 @@ function LoginPage({ login }) {
     }
 
     return (
-        <div>
+        <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 bg-gradient">
             {formErrors.length > 0 && formErrors.map(error=>
                 <Alert key={error} type="danger" message={error}/>)}
             <h1>Login</h1>
@@ -58,7 +58,7 @@ function LoginPage({ login }) {
                 />
             </div>
                 <div className="form-group col-4 mx-auto m-4">
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn btn-secondary">Submit</button>
                 </div>
             </form>
         </div>
