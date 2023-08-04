@@ -12,7 +12,7 @@ import "./CompanyCard.css";
  */
 function CompanyCard({ company }) {
   return (
-    <div className="my-2 p-3 bg-secondary bg-opacity-75 w-75 rounded">
+    <div className="my-3 p-3 bg-secondary bg-opacity-75 w-75 rounded">
       <Link to={`/companies/${company.handle}`} className="text-white text-start text-decoration-none">
         <div className = "company-card">
             <div>
