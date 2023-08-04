@@ -20,16 +20,16 @@ function HomePage() {
 
   if (user) {
     return (
-      <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25">
-        <h1 className="display-1"><strong>Welcome</strong></h1>
-        <h3>{user.firstName} {user.lastName}</h3>
+      <div className="p-3 bg-primary pt-5 text-white bg-opacity-25">
+        <h1 className="h1 font-weight-bold text-secondary"><strong>Welcome</strong></h1>
+        <h3 className='h3 font-weight-bold text-secondary'>{user.firstName} {user.lastName}</h3>
       </div>
     );
   }
   return (
     <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 bg-gradient">
-      <h1 className="display-1"><strong>Jobly</strong></h1>
-      <h4>All the jobs in one, convenient place.</h4>
+      <h1 className="display-1 font-weight-bold text-secondary"><strong>Jobly</strong></h1>
+      <h4 className="display-3 font-weight-normal text-white">All the jobs in one, convenient place.</h4>
       <div className="form-group col-4 mx-auto m-4">
         <button onClick={()=>navigateTo("login")} className="btn btn-secondary m-2">Login</button>
         <button onClick={()=>navigateTo("signup")} className="btn btn-secondary m-2">Sign Up</button>

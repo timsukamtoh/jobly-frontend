@@ -43,14 +43,14 @@ function ProfilePage({ updateUser }) {
   }
 
   return (
-    <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25">
+    <div className="p-3 bg-primary pt-5 text-white bg-opacity-25">
       {formErrors.length > 0 && formErrors.map(error =>
         <Alert key={error} type="danger" message={error} />)}
       {successfulUpdate &&
         <Alert type="success" message={"Updated successfully."} />}
-      <h1>Profile</h1>
+      <h1 className="h1 col-sm-5 mx-auto font-weight-normal bg-primary bg-opacity-50"><strong>Profile</strong></h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group col-4 mx-auto text-start m-2">
+        <div className="form-group col-sm-5 mx-auto text-start m-2">
             <label htmlFor="username" >Username</label>
             <input
                 id="username"
@@ -63,7 +63,7 @@ function ProfilePage({ updateUser }) {
                 disabled
             />
         </div>
-        <div className="form-group col-4 mx-auto text-start m-2">
+        <div className="form-group col-sm-5 mx-auto text-start m-2">
             <label htmlFor="firstName" >First Name</label>
             <input
                 id="firstName"
@@ -74,7 +74,7 @@ function ProfilePage({ updateUser }) {
                 onChange={handleChange}
             />
         </div>
-        <div className="form-group col-4 mx-auto text-start m-2">
+        <div className="form-group col-sm-5 mx-auto text-start m-2">
             <label htmlFor="lastName" >Last Name</label>
             <input
                 id="lastName"
@@ -85,7 +85,7 @@ function ProfilePage({ updateUser }) {
                 onChange={handleChange}
             />
         </div>
-        <div className="form-group col-4 mx-auto text-start m-2">
+        <div className="form-group col-sm-5 mx-auto text-start">
             <label htmlFor="email" >Email</label>
             <input
                 id="email"
@@ -96,7 +96,7 @@ function ProfilePage({ updateUser }) {
                 onChange={handleChange}
             />
         </div>
-        <div className="form-group col-4 mx-auto m-4">
+        <div className="form-group col-sm-5 mx-auto m-4">
             <button className="btn btn-secondary">Save Changes</button>
         </div>
 

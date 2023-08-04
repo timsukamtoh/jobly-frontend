@@ -17,7 +17,7 @@ function NavBar({ logout }) {
     return (
       <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="/"><strong>Jobly</strong></Navbar.Brand>
+          <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav>
@@ -36,7 +36,7 @@ function NavBar({ logout }) {
   return (
     <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2">
         <Container>
-          <Navbar.Brand href="/"><strong>Jobly</strong></Navbar.Brand>
+          <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav>

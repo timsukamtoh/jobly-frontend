@@ -32,12 +32,12 @@ function LoginPage({ login }) {
     }
 
     return (
-        <div className="p-3 bg-primary pt-5 text-dark bg-opacity-25 bg-gradient">
+        <div className="p-3 bg-primary pt-5 text-white bg-opacity-25 bg-gradient">
             {formErrors.length > 0 && formErrors.map(error=>
                 <Alert key={error} type="danger" message={error}/>)}
-            <h1>Login</h1>
+            <h1 className="h1 col-sm-5 mx-auto font-weight-bold bg-primary bg-opacity-50"><strong>Login</strong></h1>
             <form onSubmit={handleSubmit}>
-            <div className="form-group col-4 mx-auto text-start m-2">
+            <div className="form-group col-sm-5 mx-auto text-start m-2">
                 <label htmlFor="username" >Username</label>
                 <input
                 id="username"
@@ -47,7 +47,7 @@ function LoginPage({ login }) {
                 onChange={handleChange}
                 />
             </div>
-            <div className="form-group col-4 mx-auto text-start m-2">
+            <div className="form-group col-sm-5 mx-auto text-start m-2">
                 <label htmlFor="password" >Password</label>
                 <input
                     id="password"
@@ -57,7 +57,7 @@ function LoginPage({ login }) {
                     onChange={handleChange}
                 />
             </div>
-                <div className="form-group col-4 mx-auto m-4">
+                <div className="form-group col-sm-5 mx-auto m-4">
                     <button className="btn btn-secondary">Submit</button>
                 </div>
             </form>
