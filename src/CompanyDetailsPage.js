@@ -27,9 +27,9 @@ function CompanyDetailsPage() {
   if (!company) return <h1>Loading...</h1>;
 
   return(
-    <div className="text-start">
-      <h2 className = "ms-5 mt-3">{company.name}</h2>
-      <h4  className ="ms-5">{company.description}</h4>
+    <div className="bg-primary pt-5 text-black bg-opacity-25 bg-gradient">
+      <h2 className="ms-5 mt-3">{company.name}</h2>
+      <h4  className="ms-5">{company.description}</h4>
       <JobList jobs={company.jobs} />
     </div>
   )
