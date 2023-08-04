@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import "./SearchForm.css"
 /**
  * Component for search form on jobs and companies page
  *
@@ -30,7 +31,7 @@ function SearchForm({ searchFunction, term }) {
   }
 
   return (
-    <form class="xl-w-50 input-group" onSubmit={handleSubmit}>
+    <form class="input-group" onSubmit={handleSubmit}>
       <input class="form-control rounded"
         name={term}
         placeholder="Enter search term.."
@@ -42,13 +43,3 @@ function SearchForm({ searchFunction, term }) {
 }
 
 export default SearchForm;
-
-{/* <div className="input-group mx-auto m-3 ">
-</div>
-
-<div className="form-group-append">
-className = "form-control mt-3"
-        <div className="w-50"></div>
-        </div>
-className="btn btn-outline-secondary"
-</div> */}

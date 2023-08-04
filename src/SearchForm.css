@@ -1,8 +1,6 @@
 @media (min-width: 800px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    .company-card  {
-        display: flex !important;
-        flex-direction: row;
-        gap: 1rem;
+    .input-group {
+        width: 50%;
     }
 }

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import "./JobCard.css"
+import React from "react";
 /**
  * Component for rendering JobCard
  *
@@ -10,7 +9,7 @@ import "./JobCard.css"
  */
 function JobCard({job}){
   return(
-    <div className="JobCard text-white text-start p-3 bg-secondary bg-opacity-75 w-75">
+    <div className="JobCard text-white text-start my-3 p-3 bg-secondary bg-opacity-75 w-75 rounded">
       <h3>{job.title}</h3>
       <h6>Company: {job.companyHandle}</h6>
       <p>Salary: {job.salary}</p>
