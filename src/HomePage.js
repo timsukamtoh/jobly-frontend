@@ -28,7 +28,7 @@ function HomePage() {
   }
   return (
     <div>
-      <h1>Jobly</h1>
+      <h1 className="display-1"><strong>Jobly</strong></h1>
       <h4>All the jobs in one, convenient place.</h4>
       <div className="form-group col-4 mx-auto m-4">
         <button onClick={()=>navigateTo("login")} className="btn btn-secondary m-2">Login</button>
