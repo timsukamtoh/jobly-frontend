@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -15,7 +15,7 @@ function NavBar({ logout }) {
 
   if (user) {
     return (
-      <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 fixed-top">
         <Container>
           <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -34,7 +34,7 @@ function NavBar({ logout }) {
   }
 
   return (
-    <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2">
+    <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 fixed-top">
         <Container>
           <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
