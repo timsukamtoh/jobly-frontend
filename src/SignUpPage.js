@@ -79,16 +79,6 @@ function SignUpPage({ signUp }) {
                     />
                 </div>
                 <div className="form-group col-sm-5 mx-auto text-start m-2">
-                    <label htmlFor="lastName" >Last Name</label>
-                    <input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        className="form-control col-6"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group col-sm-5 mx-auto text-start m-2">
                     <label htmlFor="email" >Email </label>
                     <input
                         id="email"
