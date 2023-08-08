@@ -15,7 +15,7 @@ function NavBar({ logout }) {
 
   if (user) {
     return (
-      <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 fixed-top">
+      <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 sticky-top">
         <Container>
           <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -34,7 +34,7 @@ function NavBar({ logout }) {
   }
 
   return (
-    <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 fixed-top">
+    <Navbar bg="primary" data-bs-theme="dark" collapseOnSelect expand="lg" className="bg-body-tertiary p-2 sticky-top">
         <Container>
           <Navbar.Brand href="/" className="text-secondary"><strong>Jobly</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
