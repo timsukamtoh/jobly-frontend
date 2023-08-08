@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import CompanyDetailsPage from './CompanyDetailsPage';
@@ -19,7 +19,6 @@ import userContext from './userContext';
  */
 function RouteList({ login, signUp, updateUser }) {
   const { user } = useContext(userContext);
-  const navigate = useNavigate();
 
   if (user) {
     return (

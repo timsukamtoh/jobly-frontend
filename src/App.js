@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Navigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 import JoblyApi from './api';
@@ -100,7 +100,9 @@ function App() {
       <BrowserRouter>
         <userContext.Provider value={{ user: userState.currentUser }}>
           <NavBar logout={logout} />
-          <RouteList login={login} signUp={signUp} updateUser={updateUser} />
+          <div className="mt-4">
+            <RouteList login={login} signUp={signUp} updateUser={updateUser} />
+          </div>
         </userContext.Provider>
       </BrowserRouter>
     </div>

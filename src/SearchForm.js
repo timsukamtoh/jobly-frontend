@@ -31,8 +31,8 @@ function SearchForm({ searchFunction, term }) {
   }
 
   return (
-    <form class="input-group" onSubmit={handleSubmit}>
-      <input class="form-control rounded"
+    <form className="input-group" onSubmit={handleSubmit}>
+      <input className="form-control rounded"
         name={term}
         placeholder="Enter search term.."
         onChange={handleChange}
